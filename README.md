@@ -1,49 +1,68 @@
-Pre Reuirement 
+# Simple todo rest RESTful API for jwt login authentication
+This is small todo jwt login authentication app. it allows the user 
+to signup, using RESTful API call, will return access and refresh token. call RESTful api Reset password. call RESTful api to logout and current access token no more will  be accessible of protected resource.
 
-Python3, Flask, Flask Restful, Postgresql and SqlAlchemy
+The user also add new user after login, get list of user, update user and delete user.
 
+# Requirements
 
-Create virtual environment
+  [Python3](https://www.python.org/downloads/), [Flask](https://flask.palletsprojects.com/en/1.1.x/quickstart/), [Flask Restful](https://flask-restful.readthedocs.io/en/latest/quickstart.html), [Flask-JWT-Extended](https://flask-jwt-extended.readthedocs.io/en/stable/), [Postgresql](https://www.postgresql.org/docs/) and [SqlAlchemy](https://docs.sqlalchemy.org/en/13/).
 
->>> virtualenv -p python3 venv
+## Installation
 
-Activate virtual environment
+ create virtual environment
 
->>> . venv/bin/activate
+``` 
+virtualenv -p python3 venv
+```
 
-Install dependencies
+activate virtual environment
 
->>> pip3 install -r requirement.txt
+```
+. venv/bin/activate
+```
 
+install dependencies
 
-Generate secret key
+```
+pip3 install -r requirement.txt
+```
 
+generate secret key
+
+```
 (venv) python3
 >>>import os
->>> os.urandom(24)
+>>>os.urandom(24)
+```
 
-Install and Create psql database
+install and create psql database
 
 https://medium.com/coding-blocks/creating-user-database-and-adding-access-on-postgresql-8bfcd2f4a91e
 
 
-Create database table by Alembic 
-Reference : https://flask-migrate.readthedocs.io/en/latest/
+create database table by [Alembic](https://flask-migrate.readthedocs.io/en/latest/)
 
->>> python3 manage.py db init
->>> python3 manage.py db migrate
->>> python3 manage.py db upgrade
+ ```
+ python3 manage.py db init
+ python3 manage.py db migrate
+ python3 manage.py db upgrade
+ ```
 
-Create database table manually
+create database table manually
 
+```
 (venv) python3
->>> from project import create_app, db
->>> app = create_app()
->>> app.app_context().push()
->>> db.init_app(app)
->>> db.create_all()
->>> db.session.commit()
+from app.app import create_app, db
+app = create_app()
+app.app_context().push()
+db.init_app(app)
+db.create_all()
+db.session.commit()
+```
 
-Get flask port  
+  get flask port  
 
->>> sudo netstat -tulnp | grep :5000
+ ```
+ sudo netstat -tulnp | grep :5000
+ ```
