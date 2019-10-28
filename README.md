@@ -1,4 +1,4 @@
-# Simple todo rest RESTful API for jwt login authentication
+# Simple todo_rest Flask RESTful API for jwt login authentication
 This is small todo jwt login authentication app. it allows the user to Signup, Reset password, Login and Logout.
 The user also add new user after login, get list of user, update user and delete user.
 
