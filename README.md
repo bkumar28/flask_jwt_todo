@@ -1,6 +1,6 @@
 # Simple todo flask-restful app for jwt login authentication
 This is small todo jwt login authentication app. it allows the user to Signup, Reset password, Login and Logout.
-The user also add new user after login, get list of user, update user and delete user.
+The user also perform crud operation after login like add new user, get list of user, update user and delete user.
 
 # Requirements
 
