@@ -1,7 +1,5 @@
 # Simple todo rest RESTful API for jwt login authentication
-This is small todo jwt login authentication app. it allows the user 
-to signup, using RESTful API call, will return access and refresh token. call RESTful api Reset password. call RESTful api to logout and current access token no more will  be accessible of protected resource.
-
+This is small todo jwt login authentication app. it allows the user to Signup, Reset password, Login and Logout.
 The user also add new user after login, get list of user, update user and delete user.
 
 # Requirements
