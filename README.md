@@ -34,9 +34,7 @@ generate secret key
 >>>os.urandom(24)
 ```
 
-install and create psql database
-
-https://medium.com/coding-blocks/creating-user-database-and-adding-access-on-postgresql-8bfcd2f4a91e
+[install and create psql database](https://medium.com/coding-blocks/creating-user-database-and-adding-access-on-postgresql-8bfcd2f4a91e)
 
 
 create database table by [Alembic](https://flask-migrate.readthedocs.io/en/latest/)
@@ -58,9 +56,3 @@ db.init_app(app)
 db.create_all()
 db.session.commit()
 ```
-
-  get flask port  
-
- ```
- sudo netstat -tulnp | grep :5000
- ```
