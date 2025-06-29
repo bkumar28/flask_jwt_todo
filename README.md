@@ -1,58 +1,177 @@
-# Simple todo flask-restful app for jwt login authentication
-This is small todo jwt login authentication app. it allows the user to Signup, Reset password, Login and Logout.
-The user also perform crud operation after login like add new user, get list of user, update user and delete user.
+# 🛡️ Flask JWT ToDo API
 
-# Requirements
+A simple, secure, and RESTful ToDo API built with **Flask**, featuring **JWT-based authentication**.  
+This app allows users to sign up, log in, reset their passwords, and perform full CRUD operations on user data after authentication.
 
-  [Python3](https://www.python.org/downloads/), [Flask](https://flask.palletsprojects.com/en/1.1.x/quickstart/), [Flask Restful](https://flask-restful.readthedocs.io/en/latest/quickstart.html), [Flask-JWT-Extended](https://flask-jwt-extended.readthedocs.io/en/stable/), [Postgresql](https://www.postgresql.org/docs/) and [SqlAlchemy](https://docs.sqlalchemy.org/en/13/).
+---
 
-## Installation
+## ✨ Features
 
- create virtual environment
+- ✅ User Signup & Login (JWT Authentication)
+- 🔐 Password Reset and Logout
+- 📋 ToDo CRUD Operations (Create, Read, Update, Delete)
+- 🧰 Built with Flask-RESTful, Flask-JWT-Extended, SQLAlchemy, and PostgreSQL
+- 🧪 Easy setup with virtual environment and Alembic for migrations
 
-``` 
+---
+
+## 🛠️ Tech Stack
+
+- Python 3.x
+- Flask & Flask-RESTful
+- Flask-JWT-Extended
+- PostgreSQL
+- SQLAlchemy
+- Alembic (for DB migrations)
+
+---
+
+## 📦 Project Structure
+
+```bash
+flask-jwt-todo/
+├── app/
+│   ├── models/
+│   ├── resources/
+│   ├── __init__.py
+│   └── app.py
+├── migrations/
+├── manage.py
+├── config.py
+├── requirements.txt
+└── README.md
+```
+
+---
+
+## ⚙️ Installation Guide
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/flask-jwt-todo.git
+cd flask-jwt-todo
+```
+
+### 2. Create and Activate a Virtual Environment
+
+```bash
 virtualenv -p python3 venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
-activate virtual environment
+### 3. Install Dependencies
 
-```
-. venv/bin/activate
-```
-
-install dependencies
-
-```
-pip3 install -r requirement.txt
+```bash
+pip install -r requirements.txt
 ```
 
-generate secret key
+### 4. Generate a Secret Key
 
+```bash
+python
+>>> import os
+>>> os.urandom(24)
+# Copy the output and set it in your config.py or environment
 ```
-(venv) python3
->>>import os
->>>os.urandom(24)
+
+---
+
+## 🗃️ Database Setup
+
+### PostgreSQL Setup
+
+1. Create a PostgreSQL database manually or using a tool like `psql` or PgAdmin.
+
+```sql
+CREATE DATABASE flask_jwt_todo;
 ```
 
-[install and create psql database](https://medium.com/coding-blocks/creating-user-database-and-adding-access-on-postgresql-8bfcd2f4a91e)
+2. Update your `config.py` with the DB URI, e.g.:
 
-
-create database table by [Alembic](https://flask-migrate.readthedocs.io/en/latest/)
-
- ```
- python3 manage.py db init
- python3 manage.py db migrate
- python3 manage.py db upgrade
- ```
-
-create database table manually
-
+```python
+SQLALCHEMY_DATABASE_URI = 'postgresql://username:password@localhost/flask_jwt_todo'
 ```
-(venv) python3
-from app.app import create_app, db
-app = create_app()
-app.app_context().push()
-db.init_app(app)
-db.create_all()
-db.session.commit()
+
+---
+
+## 🔄 Migrations
+
+### Using Alembic
+
+```bash
+python manage.py db init
+python manage.py db migrate
+python manage.py db upgrade
 ```
+
+### Or Manually Create Tables
+
+```python
+python
+>>> from app.app import create_app, db
+>>> app = create_app()
+>>> app.app_context().push()
+>>> db.create_all()
+>>> db.session.commit()
+```
+
+---
+
+## 🔐 API Endpoints (Overview)
+
+| Method | Endpoint           | Description                    |
+|--------|--------------------|--------------------------------|
+| POST   | `/signup`          | Create a new user              |
+| POST   | `/login`           | Authenticate user and return JWT |
+| POST   | `/reset-password`  | Send password reset (mock)     |
+| POST   | `/logout`          | Invalidate token (blacklist)   |
+| GET    | `/users`           | Get list of users (auth)       |
+| POST   | `/users`           | Create new user (auth)         |
+| PUT    | `/users/<id>`      | Update user (auth)             |
+| DELETE | `/users/<id>`      | Delete user (auth)             |
+
+---
+
+## ✅ Example Usage (with curl)
+
+```bash
+# Sign Up
+curl -X POST http://localhost:5000/signup -H "Content-Type: application/json" \
+-d '{"username": "john", "password": "doe123"}'
+
+# Login and receive JWT token
+curl -X POST http://localhost:5000/login -H "Content-Type: application/json" \
+-d '{"username": "john", "password": "doe123"}'
+```
+
+---
+
+## 🧪 Run the Application
+
+```bash
+python manage.py run
+# or, if using app.py directly
+python app/app.py
+```
+
+---
+
+## 📝 License
+
+This project is open-source and available under the [MIT License](LICENSE).
+
+---
+
+## 🙌 Contributions
+
+Feel free to open issues, submit PRs, or fork and customize the project for your own use.
+
+---
+
+## 👨‍💻 Maintainer
+
+**Bharat Kumar**  
+_Senior Software Engineer | Cloud & Backend Systems_  
+📧 kumar.bhart28@gmail.com  
+🔗 [LinkedIn](https://www.linkedin.com/in/bharat-kumar28)
